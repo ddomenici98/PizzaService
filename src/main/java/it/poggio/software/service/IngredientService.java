@@ -17,4 +17,8 @@ public class IngredientService {
     public List<Ingredient> getIngredients () throws CustomException {
             return ingredientRepository.getIngredients();
     }
+
+    public Ingredient getIngredientById (Integer id) throws CustomException {
+        return ingredientRepository.getIngredientById(id);
+    }
 }

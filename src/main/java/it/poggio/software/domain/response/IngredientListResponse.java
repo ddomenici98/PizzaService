@@ -1,4 +1,4 @@
-package it.poggio.software.domain.exception.response;
+package it.poggio.software.domain.response;
 
 import it.poggio.software.domain.Ingredient;
 import lombok.*;
