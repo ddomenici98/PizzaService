@@ -18,8 +18,8 @@ public class PizzaController {
     @Autowired
     private PizzaService pizzaService;
 
-    @GetMapping(value = "/{id}")
-    public Pizza getPizzaFromId(@PathVariable String idPizza) {
+    @GetMapping(value = "/{idPizza}")
+    public Pizza getPizzaFromId(@PathVariable Integer idPizza) {
 
         return pizzaService.getPizzaFromId(idPizza);
 

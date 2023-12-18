@@ -13,7 +13,7 @@ public class PizzaService {
     @Autowired
     PizzaRepository pizzaRepository;
 
-    public Pizza getPizzaFromId(String idPizza) {
+    public Pizza getPizzaFromId(Integer idPizza) {
         return pizzaRepository.getPizzaFromId(idPizza);
     }
 

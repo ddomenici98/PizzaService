@@ -17,13 +17,13 @@ public class PizzaRepository {
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    public Pizza getPizzaFromId(String idPizza) {
+    public Pizza getPizzaFromId(Integer idPizza) {
 
         Map<String,Object> params = new HashMap<>();
         params.put("id",idPizza);
 
 
-        String query = "aaaaa";
+        String query = "SELECT nome FROM pizze WHERE id = :id";
 
         return namedParameterJdbcTemplate.queryForObject(query, params, new PizzaMapper());
 
