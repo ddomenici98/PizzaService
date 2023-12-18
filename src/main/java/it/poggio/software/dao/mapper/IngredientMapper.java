@@ -14,6 +14,7 @@ public class IngredientMapper implements RowMapper<Ingredient>{
                 .id(rs.getInt("id"))
                 .name(rs.getString("nome"))
                 .price(rs.getDouble("prezzo"))
+                .available(rs.getBoolean("disponibile"))
                 .build();
     }
 

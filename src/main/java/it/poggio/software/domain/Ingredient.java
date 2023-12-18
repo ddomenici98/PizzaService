@@ -12,5 +12,5 @@ public class Ingredient {
     private Integer id;
     private String name;
     private Double price;
-
+    private Boolean available;
 }
