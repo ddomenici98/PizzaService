@@ -12,5 +12,5 @@ public class Pizza {
     private String name;
     private Double price;
     private String description;
-    private Integer categoryId;
+    private String categoryName;
 }
