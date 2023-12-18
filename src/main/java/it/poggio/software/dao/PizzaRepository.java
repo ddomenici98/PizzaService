@@ -48,10 +48,10 @@ public class PizzaRepository {
         try {
             return namedParameterJdbcTemplate.queryForObject(GET_PIZZA_FROM_NAME, params, new PizzaMapper());
         }catch (EmptyResultDataAccessException er){
-            throw new CustomException(ERROR_DB.getErrorDescription(), ERROR_DB.getHttpStatus());
+            throw new CustomException(ERROR_EMPTY_RESULTSET.getErrorDescription(), ERROR_EMPTY_RESULTSET.getHttpStatus());
         }catch (DataAccessException e){
             log.error(e.getMessage(), e);
-            throw new CustomException(ERROR_EMPTY_RESULTSET.getErrorDescription(), ERROR_EMPTY_RESULTSET.getHttpStatus());
+            throw new CustomException(ERROR_DB.getErrorDescription(), ERROR_DB.getHttpStatus());
         }
     }
 

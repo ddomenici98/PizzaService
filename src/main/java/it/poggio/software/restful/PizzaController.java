@@ -33,9 +33,9 @@ public class PizzaController {
     }
 
     @GetMapping
-    public ResponseEntity<Pizza> getPizzaFromName(@RequestParam String pizzaName) throws CustomException {
+    public ResponseEntity<Pizza> getPizzaFromName(@RequestParam String name) throws CustomException {
 
-        Pizza pizza = pizzaService.getPizzaFromName(pizzaName);
+        Pizza pizza = pizzaService.getPizzaFromName(name);
 
         return new ResponseEntity<>(pizza, HttpStatus.OK);
     }

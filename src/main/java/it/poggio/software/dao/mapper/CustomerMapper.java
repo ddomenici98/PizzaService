@@ -21,9 +21,9 @@ public class CustomerMapper implements RowMapper<Customer> {
         customer.setId(rs.getInt("id"));
         customer.setName(rs.getString("nome"));
         customer.setIntercom(rs.getString("citofono"));
-        customer.setPhone(rs.getInt("telefono"));
+        customer.setPhone(rs.getString("telefono"));
         customer.setAddress(rs.getString("address"));
-        customer.setPostalCode(rs.getInt("cap"));
+        customer.setPostalCode(rs.getString("cap"));
         customer.setPreviousOrdersNumber(rs.getInt("ordini_effettuati"));
         customer.setEmail(rs.getString("email"));
         Order order = this.orderMapper.mapRow(rs, rowNum);
