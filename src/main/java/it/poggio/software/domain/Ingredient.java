@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class Ingredient {
-
+    
     private Integer id;
     private String name;
     private Double price;

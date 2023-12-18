@@ -21,4 +21,8 @@ public class IngredientService {
     public Ingredient getIngredientById (Integer id) throws CustomException {
         return ingredientRepository.getIngredientById(id);
     }
+
+    public Ingredient getIngredientByName (String name) throws CustomException {
+        return ingredientRepository.getIngredientByName(name);
+    }
 }

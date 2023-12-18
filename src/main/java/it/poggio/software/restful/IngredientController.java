@@ -23,7 +23,7 @@ public class IngredientController {
     private IngredientService ingredientService;
 
     //Ingredients list
-    @GetMapping
+    @GetMapping(value="/list")
     public @ResponseBody HttpEntity<IngredientListResponse> getAllIngredients(){
 
         HttpEntity<IngredientListResponse> httpEntity = null;
@@ -66,6 +66,27 @@ public class IngredientController {
         }
 
         return httpEntity;
+    }
 
+    @GetMapping
+    public @ResponseBody HttpEntity<IngredientResponse> getIngredientByName(@RequestParam String name){
+
+        HttpEntity<IngredientResponse> httpEntity = null;
+
+        IngredientResponse ingredientResponse = new IngredientResponse();
+
+
+        try {
+            Ingredient ingredient = ingredientService.getIngredientByName(name);
+            ingredientResponse.setIngredient(ingredient);
+            ingredientResponse.setStatus(HttpStatus.OK);
+
+            httpEntity = new HttpEntity<>(ingredientResponse);
+        }catch(CustomException ce){
+            ingredientResponse = new IngredientResponse(ce.getHttpStatus(),ce.getMessage());
+            httpEntity = new HttpEntity<>(ingredientResponse);
+        }
+
+        return httpEntity;
     }
 }

@@ -53,4 +53,20 @@ public class IngredientRepository{
         }
 
     }
+
+    public Ingredient getIngredientByName(String name) throws CustomException {
+
+        Map<String,Object> params = new HashMap<>();
+        params.put("name",name);
+
+        try {
+            return namedParameterJdbcTemplate.queryForObject(INGREDIENT_BYNAME,params, new IngredientMapper());
+        }catch (EmptyResultDataAccessException er){
+            throw new CustomException(ERROR_EMPTY_RESULTSET.getErrorDescription(), ERROR_EMPTY_RESULTSET.getHttpStatus());
+        }catch (DataAccessException e){
+            log.error(e.getMessage(), e);
+            throw new CustomException(ERROR_DB.getErrorDescription(), ERROR_DB.getHttpStatus());
+        }
+
+    }
 }
