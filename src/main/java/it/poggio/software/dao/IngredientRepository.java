@@ -1,4 +1,5 @@
 package it.poggio.software.dao;
+import it.poggio.software.dao.mapper.IngredientMapper;
 import it.poggio.software.domain.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -14,9 +15,10 @@ public class IngredientRepository{
 
     public List<Ingredient> getIngredients() {
 
-        String query = "aaaaa";
+        String query = "SELECT id,nome,prezzo FROM pizzeria.ingredienti";
 
-    return null;
+        return namedParameterJdbcTemplate.query(query, new IngredientMapper());
+
     }
 
 
