@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,9 +25,9 @@ public class IngredientController {
 
     //Ingredients list
     @GetMapping(value="/list")
-    public @ResponseBody HttpEntity<IngredientListResponse> getAllIngredients(){
+    public ResponseEntity<IngredientListResponse> getAllIngredients(){
 
-        HttpEntity<IngredientListResponse> httpEntity = null;
+        ResponseEntity<IngredientListResponse> responseEntity = null;
 
         IngredientListResponse ingredientListResponse = new IngredientListResponse();
 
@@ -34,22 +35,21 @@ public class IngredientController {
         try {
             List<Ingredient> ingredientList = ingredientService.getIngredients();
             ingredientListResponse.setIngredientList(ingredientList);
-            ingredientListResponse.setStatus(HttpStatus.OK);
 
-            httpEntity = new HttpEntity<>(ingredientListResponse);
+            responseEntity = new ResponseEntity<IngredientListResponse>(ingredientListResponse, HttpStatus.OK);
         }catch(CustomException ce){
-            ingredientListResponse = new IngredientListResponse(ce.getHttpStatus(),ce.getMessage());
-            httpEntity = new HttpEntity<>(ingredientListResponse);
+            ingredientListResponse = new IngredientListResponse(ce.getMessage());
+            responseEntity = new ResponseEntity<IngredientListResponse>(ingredientListResponse, ce.getHttpStatus());
         }
 
-        return httpEntity;
+        return responseEntity;
 
     }
 
     @GetMapping(value="/{id}")
-    public @ResponseBody HttpEntity<IngredientResponse> getIngredientById(@PathVariable Integer id){
+    public ResponseEntity<IngredientResponse> getIngredientById(@PathVariable Integer id){
 
-        HttpEntity<IngredientResponse> httpEntity = null;
+        ResponseEntity<IngredientResponse> responseEntity = null;
 
         IngredientResponse ingredientResponse = new IngredientResponse();
 
@@ -57,21 +57,20 @@ public class IngredientController {
         try {
             Ingredient ingredient = ingredientService.getIngredientById(id);
             ingredientResponse.setIngredient(ingredient);
-            ingredientResponse.setStatus(HttpStatus.OK);
 
-            httpEntity = new HttpEntity<>(ingredientResponse);
+            responseEntity = new ResponseEntity<IngredientResponse>(ingredientResponse, HttpStatus.OK);
         }catch(CustomException ce){
-            ingredientResponse = new IngredientResponse(ce.getHttpStatus(),ce.getMessage());
-            httpEntity = new HttpEntity<>(ingredientResponse);
+            ingredientResponse = new IngredientResponse(ce.getMessage());
+            responseEntity = new ResponseEntity<IngredientResponse>(ingredientResponse, ce.getHttpStatus());
         }
 
-        return httpEntity;
+        return responseEntity;
     }
 
     @GetMapping
-    public @ResponseBody HttpEntity<IngredientResponse> getIngredientByName(@RequestParam String name){
+    public ResponseEntity<IngredientResponse> getIngredientByName(@RequestParam String name){
 
-        HttpEntity<IngredientResponse> httpEntity = null;
+        ResponseEntity<IngredientResponse> responseEntity = null;
 
         IngredientResponse ingredientResponse = new IngredientResponse();
 
@@ -79,14 +78,13 @@ public class IngredientController {
         try {
             Ingredient ingredient = ingredientService.getIngredientByName(name);
             ingredientResponse.setIngredient(ingredient);
-            ingredientResponse.setStatus(HttpStatus.OK);
 
-            httpEntity = new HttpEntity<>(ingredientResponse);
+            responseEntity = new ResponseEntity<IngredientResponse>(ingredientResponse, HttpStatus.OK);
         }catch(CustomException ce){
-            ingredientResponse = new IngredientResponse(ce.getHttpStatus(),ce.getMessage());
-            httpEntity = new HttpEntity<>(ingredientResponse);
+            ingredientResponse = new IngredientResponse(ce.getMessage());
+            responseEntity = new ResponseEntity<IngredientResponse>(ingredientResponse,ce.getHttpStatus());
         }
 
-        return httpEntity;
+        return responseEntity;
     }
 }

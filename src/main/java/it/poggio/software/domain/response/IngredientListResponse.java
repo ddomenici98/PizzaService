@@ -17,6 +17,6 @@ public class IngredientListResponse extends GenericResponse{
     private List<Ingredient> ingredientList;
 
 
-    public IngredientListResponse(HttpStatus httpStatus, String message) {
+    public IngredientListResponse(String message) {
     }
 }

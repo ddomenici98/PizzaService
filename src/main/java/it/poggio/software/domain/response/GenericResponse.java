@@ -16,6 +16,5 @@ import org.springframework.http.HttpStatus;
 public class GenericResponse {
 
     private String resultMessage;
-    private HttpStatus status;
 
 }

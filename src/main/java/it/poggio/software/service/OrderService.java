@@ -16,8 +16,8 @@ public class OrderService {
     @Autowired
     OrderRepository orderRepository;
 
-    public void insertOrder() throws CustomException {
+    public void insertOrder(Order order) throws CustomException {
 
-        orderRepository.insertOrder(1,new Date(1230768000000L), Time.valueOf("20:45:00"));
+        orderRepository.insertOrder(order);
     }
 }

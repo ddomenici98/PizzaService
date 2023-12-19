@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 public class IngredientResponse extends GenericResponse{
     Ingredient ingredient;
 
-    public IngredientResponse(HttpStatus httpStatus, String message) {
+
+    public IngredientResponse(String message) {
     }
 }
