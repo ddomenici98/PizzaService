@@ -19,5 +19,5 @@ public class Order {
     private Time requestedTime;
     private Time confirmedTime;
     private Boolean accepted;
-    private Integer cartId;
+    private Cart cart;
 }

@@ -1,5 +1,6 @@
 package it.poggio.software.dao.mapper;
 
+import it.poggio.software.domain.Cart;
 import it.poggio.software.domain.Customer;
 import it.poggio.software.domain.Order;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,12 @@ public class OrderMapper implements RowMapper<Order> {
         order.setRequestedTime(rs.getTime("orario_richiesto"));
         order.setConfirmedTime(rs.getTime("orario_confermato"));
         order.setAccepted(rs.getBoolean("accettato"));
-        order.setCartId(rs.getInt("id_carrello"));
         Customer customer = new Customer();
         customer.setId(rs.getInt("id_cliente"));
         order.setCustomer(customer);
+        Cart cart = new Cart();
+        cart.setId(rs.getInt("id_carrello"));
+        order.setCart(cart);
         return order;
     }
 }
