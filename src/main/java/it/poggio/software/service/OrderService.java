@@ -20,4 +20,8 @@ public class OrderService {
 
         orderRepository.insertOrder(order);
     }
+
+    public Order getOrderById(Integer id){
+        return orderRepository.getOrder(id);
+    }
 }

@@ -1,5 +1,6 @@
 package it.poggio.software.dao;
 
+import it.poggio.software.dao.mapper.OrderMapper;
 import it.poggio.software.domain.Order;
 import it.poggio.software.domain.exception.CustomException;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +12,8 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.HashMap;
 import java.util.Map;
+
+import static it.poggio.software.dao.utils.Query.GET_ORDER;
 
 @Slf4j
 @Repository
@@ -27,6 +30,15 @@ public class OrderRepository {
         params.put("orario_richiesto",order.getRequestedTime());
 
         namedParameterJdbcTemplate.update(sql,params);
+    }
+
+    public Order getOrder(Integer id){
+        Map<String,Object> params = new HashMap<>();
+        params.put("id",id);
+
+        Order order = namedParameterJdbcTemplate.queryForObject(GET_ORDER, params, new OrderMapper());
+
+        return order;
     }
 
 

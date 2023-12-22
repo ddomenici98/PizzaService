@@ -13,4 +13,7 @@ public class Query {
 
     //customers
     public static final String INSERT_CUSTOMER = "INSERT INTO clienti(nome, citofono, telefono, indirizzo, cap, email) VALUES(:name, :intercom, :phone, :address, :postalCode, :email)";
+
+    //order
+    public static final String GET_ORDER = "SELECT * FROM ordini o JOIN clienti c ON o.id_cliente=c.id JOIN carrelli car ON o.id_carrello=car.id JOIN selezioni s ON s.id_carrello=car.id JOIN pizze p ON p.id=s.id_pizza JOIN aggiunte a ON s.id=a.id_selezione JOIN  ingredienti i ON i.id=a.id_ingrediente WHERE o.id=:id";
 }
