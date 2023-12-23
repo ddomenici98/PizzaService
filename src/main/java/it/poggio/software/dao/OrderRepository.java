@@ -1,5 +1,6 @@
 package it.poggio.software.dao;
 
+import it.poggio.software.dao.mapper.CustomerMapper;
 import it.poggio.software.dao.mapper.OrderMapper;
 import it.poggio.software.domain.Order;
 import it.poggio.software.domain.exception.CustomException;
@@ -8,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Date;
-import java.sql.Time;
 import java.util.HashMap;
 import java.util.Map;
 

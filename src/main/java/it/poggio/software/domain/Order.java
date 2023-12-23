@@ -1,9 +1,6 @@
 package it.poggio.software.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -12,6 +9,7 @@ import java.sql.Time;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Builder
 public class Order {
     private Integer id;
     private Customer customer;

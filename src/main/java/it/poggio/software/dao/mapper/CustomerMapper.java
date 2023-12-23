@@ -9,26 +9,17 @@ import java.sql.SQLException;
 
 public class CustomerMapper implements RowMapper<Customer> {
 
-    private final OrderMapper orderMapper;
-
-    public CustomerMapper(OrderMapper orderMapper) {
-        this.orderMapper = orderMapper;
-    }
-
     @Override
     public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Customer customer = new Customer();
-        customer.setId(rs.getInt("id"));
-        customer.setName(rs.getString("nome"));
-        customer.setIntercom(rs.getString("citofono"));
-        customer.setPhone(rs.getString("telefono"));
-        customer.setAddress(rs.getString("address"));
-        customer.setPostalCode(rs.getString("cap"));
-        customer.setPreviousOrdersNumber(rs.getInt("ordini_effettuati"));
-        customer.setEmail(rs.getString("email"));
-        Order order = this.orderMapper.mapRow(rs, rowNum);
-        order.setCustomer(customer);
-        customer.getOrders().add(order);
-        return customer;
+        return Customer.builder()
+                .id(rs.getInt("id"))
+                .name(rs.getString("nome"))
+                .intercom(rs.getString("citofono"))
+                .phone(rs.getString("telefono"))
+                .address(rs.getString("indirizzo"))
+                .postalCode(rs.getString("cap"))
+                .previousOrdersNumber(rs.getInt("ordini_effettuati"))
+                .email(rs.getString("email"))
+                .build();
     }
 }
