@@ -1,19 +1,20 @@
 package it.poggio.software.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Builder
 public class Cart {
     Integer id;
     Double totalPrice;
     Double deliveryPrice;
-    Set<Selection> selections = new HashSet<>();
+    List<Selection> selections = new ArrayList<>();
 }

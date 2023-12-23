@@ -9,16 +9,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AddMapper implements RowMapper<Add> {
+
+    private final IngredientMapper ingredientMapper = new IngredientMapper();
     @Override
     public Add mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Add add = new Add();
-        add.setId(rs.getInt("id"));
-        Selection selection = new Selection();
-        selection.setId(rs.getInt("id_selezione"));
-        add.setSelection(selection);
-        Ingredient ingredient = new Ingredient();
-        ingredient.setId(rs.getInt("id_ingrediente"));
-        add.setIngredient(ingredient);
-        return add;
+        return Add.builder()
+                .id(rs.getInt("id"))
+                .ingredient(ingredientMapper.mapRow(rs, rowNum))
+                .build();
     }
 }

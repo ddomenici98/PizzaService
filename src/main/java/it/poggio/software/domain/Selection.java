@@ -1,21 +1,22 @@
 package it.poggio.software.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import java.util.HashSet;
-import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Selection {
     Integer id;
     Pizza pizza;
     Cart cart;
     Integer quantity;
-    Set<Add> adds = new HashSet<Add>();
+    List<Add> adds = new ArrayList<>();
 
 }
