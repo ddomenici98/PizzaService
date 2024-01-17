@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -27,7 +24,7 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-    @GetMapping(value = "/insert")
+    @PostMapping()
     public ResponseEntity<GenericResponse> insertOrders(@RequestBody OrderRequest orderRequest) throws CustomException {
 
         orderService.insertOrder(orderRequest.getOrder());
@@ -36,12 +33,5 @@ public class OrderController {
         return new ResponseEntity<>( HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<Order> insertOrders(@PathVariable Integer id) throws CustomException {
 
-        Order order = orderService.getOrderById(id);
-
-
-        return new ResponseEntity<Order>( order,HttpStatus.OK );
-    }
 }

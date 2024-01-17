@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collections;
 
-public class CartMapper implements RowMapper {
+public class CartMapper implements RowMapper<Cart> {
 
     private final SelectionMapper selectionMapper = new SelectionMapper();
 

@@ -12,7 +12,7 @@ public class IngredientMapper implements RowMapper<Ingredient>{
     public Ingredient mapRow(ResultSet rs, int rowNum) throws SQLException {
         return Ingredient.builder()
                 .id(rs.getInt("id"))
-                .name(rs.getString("nome")) //usare alias
+                .name(rs.getString("nomeIngrediente")) //usare alias
                 .price(rs.getDouble("prezzo"))
                 .available(rs.getBoolean("disponibile"))
                 .build();
